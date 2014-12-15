@@ -1,0 +1,6 @@
+1. Buzzer alarm on critical CO2 level.
+2. LED alarm on critical CO2 level.
+2. Changing CO2 threshold level.
+3. Changing buzzer duration.
+4. Changing buzzer timeout.
+5. Setting "night hours" (nights, weekends etc.)
