@@ -8,7 +8,7 @@
 #define analogPin A0
 #define buzzer_pin 2
 
-byte mac[] = { 0x00, 0x1A, 0x79, 0x05, 0x74, 0xAA };
+byte mac[] = { 0x02, 0x1A, 0x79, 0x05, 0x74, 0xAA };
 EthernetServer server(3300);
 int co2 = 9999;
 float v400ppm = 3.95;   //MUST BE SET ACCORDING TO CALIBRATION
@@ -163,24 +163,24 @@ void setup()
 void loop()
 {
 
-//  int data = analogRead(analogPin); //digitise output from c02 sensor
-//  float voltage = data * 5.0 / 1024;     //convert output to voltage
-//
-//  // Calculate co2 from log10 formula (see sensor datasheet)
-//  float power = ((voltage - v400ppm) / A) + B;
-//  float co2ppm = pow(10, power);
-//  co2 = co2ppm;
-//
-//  if (co2 > 1000)
-//  {
-//    digitalWrite(buzzer_pin, LOW);
-//    delay(25);
-//    digitalWrite(buzzer_pin, HIGH);
-//  }
-//  else
-//  {
-//    digitalWrite(buzzer_pin, HIGH);
-//  }
+  int data = analogRead(analogPin); //digitise output from c02 sensor
+  float voltage = data * 5.0 / 1024;     //convert output to voltage
+
+  // Calculate co2 from log10 formula (see sensor datasheet)
+  float power = ((voltage - v400ppm) / A) + B;
+  float co2ppm = pow(10, power);
+  co2 = co2ppm;
+
+  if (co2 > 1000)
+  {
+    digitalWrite(buzzer_pin, LOW);
+    delay(25);
+    digitalWrite(buzzer_pin, HIGH);
+  }
+  else
+  {
+    digitalWrite(buzzer_pin, HIGH);
+  }
 
   // Listen for incoming client requests.
   EthernetClient client = server.available();
